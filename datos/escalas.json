@@ -1,0 +1,11 @@
+[
+    { "desde": 0, "hasta": 8100.17, "fijo": 0, "alicuota": 0.05 },
+    { "desde": 8100.17, "hasta": 16200.33, "fijo": 405.01, "alicuota": 0.09 },
+    { "desde": 16200.33, "hasta": 24300.5, "fijo": 1134.02, "alicuota": 0.12 },
+    { "desde": 24300.5, "hasta": 32400.67, "fijo": 2106.04, "alicuota": 0.15 },
+    { "desde": 32400.67, "hasta": 48601.0, "fijo": 3321.07, "alicuota": 0.19 },
+    { "desde": 48601.0, "hasta": 64801.34, "fijo": 6399.13, "alicuota": 0.23 },
+    { "desde": 64801.34, "hasta": 97202.0, "fijo": 10125.21, "alicuota": 0.27 },
+    { "desde": 97202.0, "hasta": 129602.67, "fijo": 18873.39, "alicuota": 0.31 },
+    { "desde": 129602.67, "hasta": 999999999.99, "fijo": 28917.06, "alicuota": 0.35 }
+]
