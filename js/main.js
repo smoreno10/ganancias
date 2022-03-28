@@ -92,20 +92,30 @@ const escalas = [];
 const liquidaciones = [];
 const inptSueldoBruto = document.querySelector("#inptSueldoBruto");
 
-const obtenerDeduccionesEspecialesIncrementadas = () => fetch("datos/deduccionesEspecialesIncrementadas.json").then((res) => res.json());
-const obtenerEscalas = () => fetch("datos/escalas.json").then((res) => res.json());
-const obtenerParametros = () => {
-  obtenerDeduccionesEspecialesIncrementadas()
-  .then(deis => {
-    deis.forEach(dei => deduccionesEspecialesIncrementadas.push(dei))
-    obtenerEscalas()
-      .then(escs => {
-        escs.forEach(esc => escalas.push(esc))
-        obtenerLiquidaciones()
-        cargarLiquidaciones();
-      })
-  })
+const obtenerDeduccionesEspecialesIncrementadas = async () => 
+{
+  const res = await fetch("datos/deduccionesEspecialesIncrementadas.json");
+  const data = res.json();
+  return data
 }
+
+const obtenerEscalas = async () => {
+  const res = await fetch("datos/escalas.json");
+  const data = res.json();
+  return data
+}
+
+const obtenerParametros = async () => {
+  const deis = await obtenerDeduccionesEspecialesIncrementadas()
+  const escs = await obtenerEscalas()
+
+  deis.forEach(dei => deduccionesEspecialesIncrementadas.push(dei))
+  escs.forEach(esc => escalas.push(esc))
+
+  obtenerLiquidaciones()
+  cargarLiquidaciones();
+}
+
 const obtenerLiquidaciones = () => {
   const datos = JSON.parse(window.localStorage.getItem("Liquidaciones"));
   if (datos) {
@@ -131,6 +141,7 @@ const obtenerLiquidaciones = () => {
     });
   }
 }
+
 const cargarLiquidaciones = () => {
   let tabla = document.querySelector("#tabla");
   tabla.innerHTML = "";
@@ -217,6 +228,7 @@ const cargarLiquidacion = (evt) => {
   inptSueldoBruto.value = "";
   inptSueldoBruto.focus();
 }
+
 const Limpiar = () => {
   liquidaciones.length = 0;
   window.localStorage.clear();
